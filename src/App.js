@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Fragment, useState } from 'react';
+
+//importo burger y cart
+import Burger from './components/Burger'
+import Cart from './components/Cart'
 
 function App() {
+
+  //estado de listado de burgas
+
+  const [burgers, setBurgers] = useState([
+    { id: 1, nombre: "Violeta", precio: 250 },
+    { id: 2, nombre: "Marron", precio: 180 },
+    { id: 3, nombre: "Roja", precio: 150 },
+  ]);
+
+  //estado del carrito
+
+  const [cart,setCart] =useState([])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+
+    <h3>Burgers</h3>
+    {burgers.map((burger)=>(
+      <Burger
+      key={burger.id}
+      burger={burger}
+      cart={cart}
+      setCart={setCart}
+      burgers={burgers}
+
+      />
+    ))}
+    <Cart
+    cart={cart}
+    />
+
+    </Fragment>
   );
 }
 

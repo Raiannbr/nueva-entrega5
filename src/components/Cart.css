@@ -1,0 +1,8 @@
+.cart{
+    position: center;
+    top: 0;
+    right: 10vm;
+}
+.cart h3{
+    color: red;
+}
